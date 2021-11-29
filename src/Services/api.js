@@ -1,4 +1,4 @@
-export function post() {
+export async function post() {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

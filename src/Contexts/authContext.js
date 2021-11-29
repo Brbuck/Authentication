@@ -7,6 +7,8 @@ function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
     let navigate = useNavigate()
 
+    const signed = !!user
+
     useEffect(() => {
         const StorageToken = localStorage.getItem('T:token')
 
@@ -20,25 +22,26 @@ function AuthProvider({ children }) {
     }, [])
 
     async function Authenticate({ email, password }) {
-        const { token, user } = await api.post({ email, password })
-        setUser(user)
-        navigate('/dashboard')
+        const { token, user } = await api.post('authenticat', { email, password })
 
         localStorage.setItem('T:token', token)
         api.defaults.headers.Authorization = `Bearer ${token}`
 
+        setUser(user)
+        navigate('/dashboard')
+
     }
 
-    
+
     function LogOut() {
         setUser(null)
         navigate('/')
         localStorage.removeItem('T:token')
-        
+
     }
 
     return (
-        <AuthContext.Provider value={{ signed: Boolean(user), user, setUser, Authenticate, LogOut }}>
+        <AuthContext.Provider value={{ signed, user, setUser, Authenticate, LogOut }}>
             {children}
         </AuthContext.Provider>
     );

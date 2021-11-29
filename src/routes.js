@@ -5,6 +5,7 @@ import { useAuth } from './Contexts/authContext'
 import Login from './Components/Login'
 import Dashboard from './Components/DashBoard'
 
+import Home from './pages/home'
 
 function AuthRoutes() {
     function PrivateRoute({ children }) {
@@ -16,7 +17,7 @@ function AuthRoutes() {
 
     return (
         <Routes>
-            <Route path="/" element={<h1>Home</h1>} />
+            <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login />} />
             <Route
                 path="/dashboard"
