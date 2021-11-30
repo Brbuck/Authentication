@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAuth } from '../../Contexts/authContext'
-
-import './styles.css'
+import './styles.scss'
 
 import { useForm } from "react-hook-form";
+
+import { useAuth } from '../../Contexts/authContext'
 
 function Login() {
     const { Authenticate } = useAuth()
@@ -19,9 +19,6 @@ function Login() {
            
             <form className="form" onSubmit={handleSubmit(handleSignIn)}>
                 <div>
-                    {/* <label htmlFor="email-address" className="sr-only">
-                        Email address
-                    </label> */}
                      <h2>Login</h2>
                     <input
                         {...register('email')}
@@ -34,9 +31,6 @@ function Login() {
                 </div>
 
                 <div>
-                    {/* <label htmlFor="password" className="sr-only">
-                        Password
-                    </label> */}
                     <input
                         {...register('password')}
                         id="password"

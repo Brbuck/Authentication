@@ -1,16 +1,15 @@
 import React from 'react';
-import './styles/globalStyle.css'
+import './styles/globalStyle.scss'
 
-//import Routes from './Routes/index'
 import AuthProvider from './Contexts/authContext';
 
-import Route from './routes'
+import Routes from './routes'
 
 function App() {
 
   return (
       <AuthProvider>
-        <Route />
+        <Routes />
       </AuthProvider>
   );
 }

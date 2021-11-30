@@ -15,7 +15,7 @@ function AuthProvider({ children }) {
         if (StorageToken) {
             api.defaults.headers.Authorization = `Bearer ${StorageToken}`
 
-            api.get().then(response => {
+            api.get('profile').then(response => {
                 setUser(response.user)
             })
         }
