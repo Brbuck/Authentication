@@ -10,16 +10,20 @@ function Login() {
     const { register, handleSubmit } = useForm();
 
     async function handleSignIn(data) {
-        await Authenticate(data)
-        console.log(data)
+        try {
+            await Authenticate(data)
+            console.log(data)
+        } catch (error) {
+            alert(error.response.data)
+        }
     }
 
     return (
         <div className="form-wrapper">
-           
+
             <form className="form" onSubmit={handleSubmit(handleSignIn)}>
                 <div>
-                     <h2>Login</h2>
+                    <h2>Login</h2>
                     <input
                         {...register('email')}
                         id="email-address"
